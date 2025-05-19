@@ -2,165 +2,178 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZEPHYR UI Mockup</title>
+  <title>ZEPHYR UI Clone</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0e0e0e;
+      background-color: #0f0f0f;
+      font-family: Arial, sans-serif;
       color: white;
       display: flex;
+      justify-content: center;
+      align-items: center;
       height: 100vh;
     }
-    .sidebar {
-      width: 250px;
-      background-color: #121212;
-      padding: 20px;
-      border-right: 1px solid #333;
+    .panel {
+      display: flex;
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
     }
-    .sidebar h1 {
-      color: #aaa;
-      font-size: 24px;
-      margin-bottom: 30px;
+    .sidebar {
+      background-color: #111;
+      padding: 20px;
+      width: 150px;
+      display: flex;
+      flex-direction: column;
     }
     .sidebar button {
-      width: 100%;
-      padding: 12px;
-      background-color: #222;
+      background-color: #2e2e2e;
       border: none;
       color: white;
-      cursor: pointer;
-      border-radius: 5px;
+      padding: 10px;
       margin-bottom: 10px;
-      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
     }
-    .sidebar button:hover {
-      background-color: #444;
+    .sidebar button.active {
+      background-color: #3d5afe;
     }
-    .main-panel {
-      flex: 1;
-      padding: 40px;
-      background-color: #1c1c1c;
-      overflow-y: auto;
+    .content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 30px;
+      min-width: 500px;
     }
-    .setting-group {
-      margin-bottom: 25px;
+    .section {
+      background-color: #2a2a2a;
+      border-radius: 10px;
+      padding: 15px;
     }
-    .setting-group label {
-      display: block;
-      font-size: 15px;
-      margin-bottom: 6px;
+    .section h2 {
+      margin-top: 0;
+      color: #a0cfff;
+      font-size: 18px;
+    }
+    .option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px 0;
+    }
+    .option label {
+      font-size: 14px;
     }
     .slider {
-      width: 200px;
+      width: 100px;
     }
     .toggle {
-      display: inline-block;
-      width: 45px;
-      height: 22px;
-      background-color: #555;
-      border-radius: 20px;
+      width: 40px;
+      height: 20px;
+      background: #444;
+      border-radius: 10px;
       position: relative;
       cursor: pointer;
     }
     .toggle::before {
       content: '';
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
       background: white;
+      border-radius: 50%;
       position: absolute;
       top: 2px;
       left: 2px;
-      border-radius: 50%;
       transition: 0.3s;
     }
     .toggle.active {
-      background-color: #4CAF50;
+      background: #4caf50;
     }
     .toggle.active::before {
-      left: 25px;
+      left: 22px;
     }
-    .title {
-      font-size: 20px;
-      margin-bottom: 15px;
-      color: #7ccfff;
+    select {
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px;
     }
   </style>
 </head>
 <body>
-  <div class="sidebar">
-    <h1>ZEPHYR</h1>
-    <button>Main</button>
-  </div>
-  <div class="main-panel">
-    <div class="title">Aimbot</div>
-    <div class="setting-group">
-      <label>Enabled</label>
-      <div class="toggle" onclick="this.classList.toggle('active')"></div>
+  <div class="panel">
+    <div class="sidebar">
+      <button class="active">Main</button>
     </div>
-    <div class="setting-group">
-      <label>Keybind</label>
-      <select>
-        <option>None</option>
-        <option>Q</option>
-        <option>E</option>
-        <option>F</option>
-      </select>
+    <div class="content">
+      <div class="section">
+        <h2>Aimbot</h2>
+        <div class="option">
+          <label>Enabled</label>
+          <div class="toggle" onclick="this.classList.toggle('active')"></div>
+        </div>
+        <div class="option">
+          <label>Keybind</label>
+          <select><option>None</option><option>Q</option><option>E</option></select>
+        </div>
+        <div class="option">
+          <label>Smoothing</label>
+          <input class="slider" type="range" min="1" max="10" value="5">
+        </div>
+        <div class="option">
+          <label>Wall Check</label>
+          <div class="toggle" onclick="this.classList.toggle('active')"></div>
+        </div>
+        <div class="option">
+          <label>Team Check</label>
+          <div class="toggle" onclick="this.classList.toggle('active')"></div>
+        </div>
+        <div class="option">
+          <label>FOV Circle</label>
+          <div class="toggle" onclick="this.classList.toggle('active')"></div>
+        </div>
+        <div class="option">
+          <label>FOV Radius</label>
+          <input class="slider" type="range" min="10" max="200" value="100">
+        </div>
+      </div>
+      <div class="section">
+        <h2>Silent Aim / No cooldown</h2>
+        <div class="option">
+          <label>Enabled</label>
+          <div class="toggle" onclick="this.classList.toggle('active')"></div>
+        </div>
+        <div class="option">
+          <label>Wallbang</label>
+          <div class="toggle" onclick="this.classList.toggle('active')"></div>
+        </div>
+        <div class="option">
+          <label>Show FOV</label>
+          <div class="toggle" onclick="this.classList.toggle('active')"></div>
+        </div>
+        <div class="option">
+          <label>FOV Radius</label>
+          <input class="slider" type="range" min="10" max="200" value="100">
+        </div>
+        <h2>Visual ESP</h2>
+        <div class="option">
+          <label>Skeleton ESP</label>
+          <div class="toggle" onclick="this.classList.toggle('active')"></div>
+        </div>
+        <div class="option">
+          <label>HEAD ESP</label>
+          <div class="toggle" onclick="this.classList.toggle('active')"></div>
+        </div>
+        <div class="option">
+          <label>CHAMS ESP</label>
+          <div class="toggle" onclick="this.classList.toggle('active')"></div>
+        </div>
+      </div>
     </div>
-    <div class="setting-group">
-      <label>Smoothing</label>
-      <input type="range" class="slider" min="1" max="10" value="5">
-    </div>
-    <div class="setting-group">
-      <label>Wall Check</label>
-      <div class="toggle" onclick="this.classList.toggle('active')"></div>
-    </div>
-    <div class="setting-group">
-      <label>Team Check</label>
-      <div class="toggle" onclick="this.classList.toggle('active')"></div>
-    </div>
-    <div class="setting-group">
-      <label>FOV Circle</label>
-      <div class="toggle" onclick="this.classList.toggle('active')"></div>
-    </div>
-    <div class="setting-group">
-      <label>FOV Radius</label>
-      <input type="range" class="slider" min="10" max="200" value="100">
-    </div><div class="title">Silent Aim / No Cooldown</div>
-<div class="setting-group">
-  <label>Enabled</label>
-  <div class="toggle" onclick="this.classList.toggle('active')"></div>
-</div>
-<div class="setting-group">
-  <label>Wallbang</label>
-  <div class="toggle" onclick="this.classList.toggle('active')"></div>
-</div>
-<div class="setting-group">
-  <label>Show FOV</label>
-  <div class="toggle" onclick="this.classList.toggle('active')"></div>
-</div>
-<div class="setting-group">
-  <label>FOV Radius</label>
-  <input type="range" class="slider" min="10" max="200" value="100">
-</div>
-
-<div class="title">Visual ESP</div>
-<div class="setting-group">
-  <label>Skeleton ESP</label>
-  <div class="toggle" onclick="this.classList.toggle('active')"></div>
-</div>
-<div class="setting-group">
-  <label>HEAD ESP</label>
-  <div class="toggle" onclick="this.classList.toggle('active')"></div>
-</div>
-<div class="setting-group">
-  <label>CHAMS ESP</label>
-  <div class="toggle" onclick="this.classList.toggle('active')"></div>
-</div>
-
   </div>
 </body>
 </html>
